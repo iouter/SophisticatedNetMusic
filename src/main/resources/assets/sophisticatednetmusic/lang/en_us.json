@@ -1,0 +1,16 @@
+{
+  "itemGroup.sophisticatednetmusic": "Sophisticated Net Music",
+  "upgrade_group.sophisticatedcore.net_music_upgrades": "Net Music Upgrades",
+  "gui.sophisticatedcore.upgrades.net_music": "Net Music",
+  "gui.sophisticatedcore.upgrades.advanced_net_music": "Net Music",
+  "gui.sophisticatedcore.upgrades.net_music.tooltip": "Net Music Player",
+  "gui.sophisticatedcore.upgrades.advanced_net_music.tooltip": "Net Music Player",
+  "item.sophisticatednetmusic.net_music_upgrade_storage": "Net Music Upgrade",
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_storage": "Advanced Net Music Upgrade",
+  "item.sophisticatednetmusic.net_music_upgrade_backpacks": "Net Music Upgrade",
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_backpacks": "Advanced Net Music Upgrade",
+  "item.sophisticatednetmusic.net_music_upgrade_storage.tooltip": "Portable Net Music Player",
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_storage.tooltip": "Portable Net Music Player with support for more music discs\nAlso more playback options",
+  "item.sophisticatednetmusic.net_music_upgrade_backpacks.tooltip": "Portable Net Music Player",
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_backpacks.tooltip": "Portable Net Music Player with support for more music discs\nAlso more playback options"
+}

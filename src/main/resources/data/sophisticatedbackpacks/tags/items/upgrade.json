@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "sophisticatednetmusic:net_music_upgrade_backpacks",
+      "required": false
+    },
+    {
+      "id": "sophisticatednetmusic:advanced_net_music_upgrade_backpacks",
+      "required": false
+    }
+  ]
+}

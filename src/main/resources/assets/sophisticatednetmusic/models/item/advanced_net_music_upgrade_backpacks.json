@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "sophisticatednetmusic:item/advanced_net_music_upgrade_backpacks"
+  }
+}
