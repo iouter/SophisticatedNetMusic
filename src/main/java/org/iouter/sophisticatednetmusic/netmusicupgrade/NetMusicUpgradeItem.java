@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.IntSupplier;
 
 public class NetMusicUpgradeItem extends UpgradeItemBase<NetMusicUpgradeWrapper> {
-    public static final UpgradeGroup UPGRADE_GROUP = new UpgradeGroup("net_music_upgrades", "netmusic_upgrades");
+    public static final UpgradeGroup UPGRADE_GROUP = new UpgradeGroup("net_music_upgrades", "net_music_upgrades");
     public static final UpgradeType<NetMusicUpgradeWrapper> TYPE = new UpgradeType<>(NetMusicUpgradeWrapper::new);
     private final IntSupplier numberOfSlots;
     private final IntSupplier slotsInRow;
