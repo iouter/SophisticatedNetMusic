@@ -20,11 +20,13 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+/**
+ * Based on {@link net.p3pp3rf1y.sophisticatedcore.upgrades.jukebox.JukeboxUpgradeWrapper}
+ */
 public class NetMusicUpgradeWrapper extends UpgradeWrapperBase<NetMusicUpgradeWrapper, NetMusicUpgradeItem> implements ITickableUpgrade {
     private static final int KEEP_ALIVE_SEND_INTERVAL = 5;
     private final ItemStackHandler discInventory;
@@ -145,8 +147,8 @@ public class NetMusicUpgradeWrapper extends UpgradeWrapperBase<NetMusicUpgradeWr
             ItemMusicCD.SongInfo songInfo = ItemMusicCD.getSongInfo(getDisc());
             ServerMusicSoundHandler.startPlayingMusic(storageUuid, serverLevel, pos, songInfo, onFinishedCallback, entityPlaying != null ? entityPlaying.getId() : -1);
             final int lengthInTicks = songInfo.songTime * 20 + 64;
-            NBTHelper.setLong(upgrade, "musicFinishTime", level.getGameTime() + lengthInTicks);
-            NBTHelper.setInteger(upgrade, "musicLength", lengthInTicks);
+            NBTHelper.setLong(upgrade, "discFinishTime", level.getGameTime() + lengthInTicks);
+            NBTHelper.setInteger(upgrade, "discLength", lengthInTicks);
             nowPlaying = storageUuid;
             setIsPlaying(true);
         });
@@ -188,8 +190,8 @@ public class NetMusicUpgradeWrapper extends UpgradeWrapperBase<NetMusicUpgradeWr
                 }
         );
         setIsPlaying(false);
-        NBTHelper.removeTag(upgrade, "musicFinishTime");
-        NBTHelper.removeTag(upgrade, "musicLength");
+        NBTHelper.removeTag(upgrade, "discFinishTime");
+        NBTHelper.removeTag(upgrade, "discLength");
         setDiscSlotActive(-1);
         playlist.clear();
         history.clear();
@@ -304,10 +306,10 @@ public class NetMusicUpgradeWrapper extends UpgradeWrapperBase<NetMusicUpgradeWr
     }
 
     public long getDiscFinishTime() {
-        return NBTHelper.getLong(upgrade, "musicFinishTime").orElse(0L);
+        return NBTHelper.getLong(upgrade, "discFinishTime").orElse(0L);
     }
 
     public int getDiscLength() {
-        return NBTHelper.getInt(upgrade, "musicLength").orElse(0);
+        return NBTHelper.getInt(upgrade, "discLength").orElse(0);
     }
 }

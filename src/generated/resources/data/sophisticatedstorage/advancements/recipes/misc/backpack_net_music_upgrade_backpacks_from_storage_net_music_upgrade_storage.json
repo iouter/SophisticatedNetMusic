@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_storage_upgrade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sophisticatednetmusic:net_music_upgrade_storage"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "sophisticatedstorage:backpack_net_music_upgrade_backpacks_from_storage_net_music_upgrade_storage"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_upgrade",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sophisticatedstorage:backpack_net_music_upgrade_backpacks_from_storage_net_music_upgrade_storage"
+    ]
+  },
+  "sends_telemetry_event": true
+}

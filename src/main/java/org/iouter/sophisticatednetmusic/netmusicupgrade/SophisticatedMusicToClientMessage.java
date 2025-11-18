@@ -24,6 +24,9 @@ import java.util.regex.Pattern;
 
 import static com.github.tartaricacid.netmusic.client.audio.MusicPlayManager.MUSIC_163_URL;
 
+/**
+ * Based on {@link com.github.tartaricacid.netmusic.network.message.MusicToClientMessage}
+ */
 public class SophisticatedMusicToClientMessage {
     private static final Pattern PATTERN = Pattern.compile("^.*?\\?id=(\\d+)\\.mp3$");
 

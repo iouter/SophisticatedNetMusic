@@ -11,6 +11,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.IntSupplier;
 
+/**
+ * Based on {@link net.p3pp3rf1y.sophisticatedcore.upgrades.jukebox.JukeboxUpgradeItem}
+ */
 public class NetMusicUpgradeItem extends UpgradeItemBase<NetMusicUpgradeWrapper> {
     public static final UpgradeGroup UPGRADE_GROUP = new UpgradeGroup("net_music_upgrades", "net_music_upgrades");
     public static final UpgradeType<NetMusicUpgradeWrapper> TYPE = new UpgradeType<>(NetMusicUpgradeWrapper::new);

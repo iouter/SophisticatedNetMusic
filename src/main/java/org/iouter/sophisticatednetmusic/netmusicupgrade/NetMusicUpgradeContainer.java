@@ -12,6 +12,9 @@ import net.p3pp3rf1y.sophisticatedcore.util.NBTHelper;
 
 import java.util.Optional;
 
+/**
+ * Based on {@link net.p3pp3rf1y.sophisticatedcore.upgrades.jukebox.JukeboxUpgradeContainer}
+ */
 public class NetMusicUpgradeContainer extends UpgradeContainerBase<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> {
 
     private static final String ACTION_DATA = "action";

@@ -1,0 +1,22 @@
+{
+  "itemGroup.sophisticatednetmusic": "精妙网络唱片机",
+  "upgrade_group.sophisticatedcore.net_music_upgrades": "网络唱片机升级",
+
+  "gui.sophisticatedcore.upgrades.net_music": "网络唱片机",
+  "gui.sophisticatedcore.upgrades.net_music.tooltip": "网络唱片机",
+
+  "gui.sophisticatedcore.upgrades.advanced_net_music": "网络唱片机",
+  "gui.sophisticatedcore.upgrades.advanced_net_music.tooltip": "高级网络唱片机",
+
+  "item.sophisticatednetmusic.net_music_upgrade_storage": "网络唱片机升级",
+  "item.sophisticatednetmusic.net_music_upgrade_storage.tooltip": "便携网络唱片机",
+
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_storage": "高级网络唱片机升级",
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_storage.tooltip": "支持更多唱片，提供更多播放选项的便携音乐唱片机",
+
+  "item.sophisticatednetmusic.net_music_upgrade_backpacks": "网络唱片机升级",
+  "item.sophisticatednetmusic.net_music_upgrade_backpacks.tooltip": "便携网络唱片机",
+
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_backpacks": "高级网络唱片机升级",
+  "item.sophisticatednetmusic.advanced_net_music_upgrade_backpacks.tooltip": "支持更多唱片的便携式网络音乐唱片机\n当然还有更多播放选项"
+}

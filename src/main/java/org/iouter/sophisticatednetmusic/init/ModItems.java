@@ -24,6 +24,9 @@ import org.iouter.sophisticatednetmusic.netmusicupgrade.NetMusicUpgradeItem;
 import org.iouter.sophisticatednetmusic.netmusicupgrade.NetMusicUpgradeTab;
 import org.iouter.sophisticatednetmusic.netmusicupgrade.NetMusicUpgradeWrapper;
 
+/**
+ * Based on {@link net.p3pp3rf1y.sophisticatedstorage.init.ModItems} or {@link net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems}
+ */
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SophisticatedNetMusic.MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB.location(), SophisticatedNetMusic.MODID);
@@ -31,24 +34,34 @@ public class ModItems {
     public static final RegistryObject<NetMusicUpgradeItem> ADVANCED_NET_MUSIC_UPGRADE_STORAGE;
     public static final RegistryObject<NetMusicUpgradeItem> NET_MUSIC_UPGRADE_BACKPACKS;
     public static final RegistryObject<NetMusicUpgradeItem> ADVANCED_NET_MUSIC_UPGRADE_BACKPACKS;
-    private static final UpgradeContainerType<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> NET_MUSIC_TYPE = new UpgradeContainerType<>(NetMusicUpgradeContainer::new);
-    private static final UpgradeContainerType<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> ADVANCED_NET_MUSIC_TYPE = new UpgradeContainerType<>(NetMusicUpgradeContainer::new);
+    private static final UpgradeContainerType<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> NET_MUSIC_TYPE_STORAGE;
+    private static final UpgradeContainerType<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> ADVANCED_NET_MUSIC_TYPE_STORAGE;
+    private static final UpgradeContainerType<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> NET_MUSIC_TYPE_BACKPACKS;
+    private static final UpgradeContainerType<NetMusicUpgradeWrapper, NetMusicUpgradeContainer> ADVANCED_NET_MUSIC_TYPE_BACKPACKS;
     public static RegistryObject<CreativeModeTab> CREATIVE_TAB;
 
     static {
         if (SophisticatedNetMusic.isSophisticatedStorageLoaded) {
             NET_MUSIC_UPGRADE_STORAGE = ITEMS.register("net_music_upgrade_storage", () -> new NetMusicUpgradeItem(() -> 1, () -> 1));
             ADVANCED_NET_MUSIC_UPGRADE_STORAGE = ITEMS.register("advanced_net_music_upgrade_storage", () -> new NetMusicUpgradeItem(Config.SERVER.advancedJukeboxUpgrade.numberOfSlots::get, Config.SERVER.advancedJukeboxUpgrade.slotsInRow::get));
+            NET_MUSIC_TYPE_STORAGE = new UpgradeContainerType<>(NetMusicUpgradeContainer::new);
+            ADVANCED_NET_MUSIC_TYPE_STORAGE = new UpgradeContainerType<>(NetMusicUpgradeContainer::new);
         } else {
             NET_MUSIC_UPGRADE_STORAGE = null;
             ADVANCED_NET_MUSIC_UPGRADE_STORAGE = null;
+            NET_MUSIC_TYPE_STORAGE = null;
+            ADVANCED_NET_MUSIC_TYPE_STORAGE = null;
         }
         if (SophisticatedNetMusic.isSophisticatedBackpacksLoaded) {
             NET_MUSIC_UPGRADE_BACKPACKS = ITEMS.register("net_music_upgrade_backpacks", () -> new NetMusicUpgradeItem(() -> 1, () -> 1));
             ADVANCED_NET_MUSIC_UPGRADE_BACKPACKS = ITEMS.register("advanced_net_music_upgrade_backpacks", () -> new NetMusicUpgradeItem(net.p3pp3rf1y.sophisticatedbackpacks.Config.SERVER.advancedJukeboxUpgrade.numberOfSlots::get, net.p3pp3rf1y.sophisticatedbackpacks.Config.SERVER.advancedJukeboxUpgrade.slotsInRow::get));
+            NET_MUSIC_TYPE_BACKPACKS = new UpgradeContainerType<>(NetMusicUpgradeContainer::new);
+            ADVANCED_NET_MUSIC_TYPE_BACKPACKS = new UpgradeContainerType<>(NetMusicUpgradeContainer::new);
         } else {
             NET_MUSIC_UPGRADE_BACKPACKS = null;
             ADVANCED_NET_MUSIC_UPGRADE_BACKPACKS = null;
+            NET_MUSIC_TYPE_BACKPACKS = null;
+            ADVANCED_NET_MUSIC_TYPE_BACKPACKS = null;
         }
         if (SophisticatedNetMusic.isSophisticatedStorageLoaded) {
             CREATIVE_TAB = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder().icon(() -> NET_MUSIC_UPGRADE_STORAGE.get().getDefaultInstance()).title(Component.translatable("itemGroup." + SophisticatedNetMusic.MODID)).displayItems((featureFlags, output) -> {
@@ -74,18 +87,24 @@ public class ModItems {
 
     public static void registerContainers(RegisterEvent event) {
         if (SophisticatedNetMusic.isSophisticatedStorageLoaded) {
-            UpgradeContainerRegistry.register(NET_MUSIC_UPGRADE_STORAGE.getId(), NET_MUSIC_TYPE);
-            UpgradeContainerRegistry.register(ADVANCED_NET_MUSIC_UPGRADE_STORAGE.getId(), ADVANCED_NET_MUSIC_TYPE);
+            UpgradeContainerRegistry.register(NET_MUSIC_UPGRADE_STORAGE.getId(), NET_MUSIC_TYPE_STORAGE);
+            UpgradeContainerRegistry.register(ADVANCED_NET_MUSIC_UPGRADE_STORAGE.getId(), ADVANCED_NET_MUSIC_TYPE_STORAGE);
         }
         if (SophisticatedNetMusic.isSophisticatedBackpacksLoaded) {
-            UpgradeContainerRegistry.register(NET_MUSIC_UPGRADE_BACKPACKS.getId(), NET_MUSIC_TYPE);
-            UpgradeContainerRegistry.register(ADVANCED_NET_MUSIC_UPGRADE_BACKPACKS.getId(), ADVANCED_NET_MUSIC_TYPE);
+            UpgradeContainerRegistry.register(NET_MUSIC_UPGRADE_BACKPACKS.getId(), NET_MUSIC_TYPE_BACKPACKS);
+            UpgradeContainerRegistry.register(ADVANCED_NET_MUSIC_UPGRADE_BACKPACKS.getId(), ADVANCED_NET_MUSIC_TYPE_BACKPACKS);
         }
 
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            UpgradeGuiManager.registerTab(NET_MUSIC_TYPE, NetMusicUpgradeTab.Basic::new);
-            UpgradeGuiManager.registerTab(ADVANCED_NET_MUSIC_TYPE, (NetMusicUpgradeContainer uc, Position p, StorageScreenBase<?> s) -> new NetMusicUpgradeTab.Advanced(uc, p, s, Config.SERVER.advancedJukeboxUpgrade.slotsInRow.get()));
+            if (SophisticatedNetMusic.isSophisticatedStorageLoaded) {
+                UpgradeGuiManager.registerTab(NET_MUSIC_TYPE_STORAGE, NetMusicUpgradeTab.Basic::new);
+                UpgradeGuiManager.registerTab(ADVANCED_NET_MUSIC_TYPE_STORAGE, (NetMusicUpgradeContainer uc, Position p, StorageScreenBase<?> s) -> new NetMusicUpgradeTab.Advanced(uc, p, s, Config.SERVER.advancedJukeboxUpgrade.slotsInRow.get()));
+            }
+            if (SophisticatedNetMusic.isSophisticatedBackpacksLoaded) {
+                UpgradeGuiManager.registerTab(NET_MUSIC_TYPE_BACKPACKS, NetMusicUpgradeTab.Basic::new);
+                UpgradeGuiManager.registerTab(ADVANCED_NET_MUSIC_TYPE_BACKPACKS, (NetMusicUpgradeContainer uc, Position p, StorageScreenBase<?> s) -> new NetMusicUpgradeTab.Advanced(uc, p, s, net.p3pp3rf1y.sophisticatedbackpacks.Config.SERVER.advancedJukeboxUpgrade.slotsInRow.get()));
+            }
         });
     }
 }

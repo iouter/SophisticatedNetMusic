@@ -17,6 +17,9 @@ import org.iouter.sophisticatednetmusic.netmusicupgrade.SophisticatedStopMusicTo
 
 import java.util.Optional;
 
+/**
+ * Based on {@link com.github.tartaricacid.netmusic.network.NetworkHandler}
+ */
 public class NetworkHandler {
     private static final String VERSION = "1.0.0";
 

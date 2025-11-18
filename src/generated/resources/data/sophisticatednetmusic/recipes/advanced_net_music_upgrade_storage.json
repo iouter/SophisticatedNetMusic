@@ -1,0 +1,35 @@
+{
+  "type": "sophisticatedcore:upgrade_next_tier",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sophisticatedstorage"
+    },
+    {
+      "type": "sophisticatedcore:item_enabled",
+      "itemRegistryName": "sophisticatednetmusic:advanced_net_music_upgrade_storage"
+    }
+  ],
+  "key": {
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "J": {
+      "item": "sophisticatednetmusic:net_music_upgrade_storage"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    " D ",
+    "GJG",
+    "RRR"
+  ],
+  "result": {
+    "item": "sophisticatednetmusic:advanced_net_music_upgrade_storage"
+  }
+}

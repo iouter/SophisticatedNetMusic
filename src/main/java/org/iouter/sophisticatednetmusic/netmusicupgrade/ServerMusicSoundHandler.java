@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Based on {@link net.p3pp3rf1y.sophisticatedcore.upgrades.jukebox.ServerStorageSoundHandler}
+ */
 public class ServerMusicSoundHandler {
     private static final int KEEP_ALIVE_CHECK_INTERVAL = 10;
     private static final Map<ResourceKey<Level>, Long> lastWorldCheck = new HashMap<>();

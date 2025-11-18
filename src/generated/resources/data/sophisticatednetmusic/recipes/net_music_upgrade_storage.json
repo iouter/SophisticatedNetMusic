@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sophisticatedstorage"
+    },
+    {
+      "type": "sophisticatedcore:item_enabled",
+      "itemRegistryName": "sophisticatednetmusic:net_music_upgrade_storage"
+    }
+  ],
+  "key": {
+    "B": {
+      "item": "sophisticatedstorage:upgrade_base"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "J": {
+      "item": "netmusic:music_player"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    " J ",
+    "IBI",
+    " R "
+  ],
+  "result": {
+    "item": "sophisticatednetmusic:net_music_upgrade_storage"
+  }
+}

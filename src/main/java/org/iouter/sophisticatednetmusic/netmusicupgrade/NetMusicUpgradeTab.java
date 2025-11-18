@@ -22,6 +22,9 @@ import java.util.Map;
 
 import static net.p3pp3rf1y.sophisticatedcore.client.gui.utils.GuiHelper.*;
 
+/**
+ * Based on {@link net.p3pp3rf1y.sophisticatedcore.upgrades.jukebox.JukeboxUpgradeTab}
+ */
 public abstract class NetMusicUpgradeTab extends UpgradeSettingsTab<NetMusicUpgradeContainer> {
     public static final int TOP_Y = 24;
     private static final TextureBlitData PLAY_FOREGROUND = new TextureBlitData(ICONS, new Position(1, 1), Dimension.SQUARE_256, new UV(16, 64), Dimension.SQUARE_16);
